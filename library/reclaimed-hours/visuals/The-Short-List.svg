@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+  <!-- Font: Comic Neue (hand-drawn). Install it, or swap font-family below to your marker font. -->
+  <style>.hd{font-family:'Comic Neue','Comic Sans MS',cursive;font-weight:700}</style>
+  <rect width="1200" height="628" fill="#ffffff"/>
+  <text class="hd" x="70" y="96" font-size="50" fill="#17181d">the short list</text>
+
+  <!-- struck line: more content -->
+  <rect x="112" y="168" width="46" height="46" rx="8" fill="none" stroke="#731DD8" stroke-width="4"/>
+  <line x1="122" y1="178" x2="148" y2="204" stroke="#731DD8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="148" y1="178" x2="122" y2="204" stroke="#731DD8" stroke-width="4" stroke-linecap="round"/>
+  <text class="hd" x="180" y="204" font-size="40" fill="#8a8880">make more content</text>
+  <path d="M182,190 C 360,185 560,196 690,189" fill="none" stroke="#731DD8" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- checked item 1 -->
+  <rect x="112" y="256" width="46" height="46" rx="8" fill="none" stroke="#17181d" stroke-width="4"/>
+  <path d="M120,280 L 134,294 L 156,262" fill="none" stroke="#45e388" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="hd" x="180" y="292" font-size="40" fill="#17181d">one brand bet that compounds</text>
+
+  <!-- checked item 2 -->
+  <rect x="112" y="344" width="46" height="46" rx="8" fill="none" stroke="#17181d" stroke-width="4"/>
+  <path d="M120,368 L 134,382 L 156,350" fill="none" stroke="#45e388" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="hd" x="180" y="380" font-size="40" fill="#17181d">your buyer's words, on reddit</text>
+
+  <!-- checked item 3 -->
+  <rect x="112" y="432" width="46" height="46" rx="8" fill="none" stroke="#17181d" stroke-width="4"/>
+  <path d="M120,456 L 134,470 L 156,438" fill="none" stroke="#45e388" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="hd" x="180" y="468" font-size="40" fill="#17181d">one hard positioning call</text>
+
+  <text class="hd" x="112" y="556" font-size="34" fill="#1f9455">fewer things. done for real.</text>
+</svg>

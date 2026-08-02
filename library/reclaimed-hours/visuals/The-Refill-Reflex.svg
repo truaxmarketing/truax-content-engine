@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+  <!-- Font: Comic Neue (hand-drawn). Install it, or swap font-family below to your marker font. -->
+  <style>.hd{font-family:'Comic Neue','Comic Sans MS',cursive;font-weight:700}</style>
+  <rect width="1200" height="628" fill="#ffffff"/>
+  <text class="hd" x="70" y="96" font-size="50" fill="#17181d">the refill reflex</text>
+
+  <!-- Bar A: crammed on reflex -->
+  <rect x="110" y="178" width="1000" height="98" rx="16" fill="none" stroke="#17181d" stroke-width="4"/>
+  <g fill="#731DD8">
+    <rect x="126" y="192" width="80" height="70" rx="6"/><rect x="214" y="192" width="80" height="70" rx="6"/>
+    <rect x="302" y="192" width="80" height="70" rx="6"/><rect x="390" y="192" width="80" height="70" rx="6"/>
+    <rect x="478" y="192" width="80" height="70" rx="6"/><rect x="566" y="192" width="80" height="70" rx="6"/>
+    <rect x="654" y="192" width="80" height="70" rx="6"/><rect x="742" y="192" width="80" height="70" rx="6"/>
+    <rect x="830" y="192" width="80" height="70" rx="6"/><rect x="918" y="192" width="80" height="70" rx="6"/>
+    <rect x="1006" y="192" width="80" height="70" rx="6"/>
+  </g>
+  <text class="hd" x="112" y="322" font-size="36" fill="#731DD8">filled on reflex</text>
+
+  <!-- Bar B: spent on purpose -->
+  <rect x="110" y="384" width="1000" height="98" rx="16" fill="none" stroke="#17181d" stroke-width="4"/>
+  <rect x="126" y="398" width="180" height="70" rx="8" fill="#45e388"/>
+  <text class="hd" x="112" y="528" font-size="36" fill="#1f9455">spent on purpose</text>
+</svg>

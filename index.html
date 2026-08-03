@@ -88,7 +88,7 @@
       <div class="sub">What the market is asking for, scored against your practice and your voice.</div>
     </div>
     <div class="meta">
-      <b>DATA AS OF</b><span>31 Jul 2026</span>
+      <b>DATA AS OF</b><span>03 Aug 2026</span>
       <b style="margin-top:8px">PILLARS</b><span>Brand · Positioning &amp; GTM · Leadership · Storytelling &amp; B2B</span>
       <b style="margin-top:8px">LIBRARY</b><span><a href="/library/" style="color:#45e388;text-decoration:none;font-weight:600">Open content library &rarr;</a></span>
     </div>
@@ -190,31 +190,36 @@ const THEMES = [
    ev:[{a:"Your clarity belief: the brave, specific, true thing beats the polished sound-alike. Your POV, your examples",s:"Truax Marketing · your POV",u:"#"}]},
 
   {id:12, t:"The metric most marketing leaders optimize is quietly killing the brand", pillar:"leadership", score:67.0, eng:52, fit:80, pov:84, sat:55, items:1, mom:"new", quad:"fading",
-   ev:[{a:"Your experience-driven take on short-term metrics vs brand. Sinek's “you get the behavior you measure” is a nudge, not the argument",s:"nudge: Simon Sinek",u:"https://simonsinek.com/stories"}]}
+   ev:[{a:"Your experience-driven take on short-term metrics vs brand. Sinek's “you get the behavior you measure” is a nudge, not the argument",s:"nudge: Simon Sinek",u:"https://simonsinek.com/stories"}]},
+
+  {id:13, t:"The format isn't dead. The label is.", pillar:"positioning", signature:false, score:81.0, eng:62, fit:90, pov:93, sat:24, items:2, mom:"new", quad:"open",
+   why:"<b>Straight from your inbox this morning — and it's a positioning play.</b> Exit Five just crossed out the word 'webinar' and wrote 'live session,' then named the enemy as 'AI slop' while buyers are 'craving realness.' Your riff, not theirs: marketers keep declaring channels dead when what actually died was the tired execution and the stale name. Reposition the format before you abandon it.",
+   ev:[{a:"Exit Five email today — struck 'webinar,' wrote 'live session,' framed the enemy as 'AI slop' while buyers are 'craving realness'",s:"Exit Five · your inbox (Aug 3)",u:"https://media.exitfive.com/5-b2b-webinar-plays-to-crush-your-competition"},
+       {a:"The argument is yours: your trigger-based positioning thesis — reframe the moment the format serves, don't chase its obituary",s:"Trigger-Based-Messaging-Playbook · your POV",u:"#"}]},
+
+  {id:14, t:"AI slop is quietly raising the price of real", pillar:"brand", signature:false, score:77.5, eng:70, fit:86, pov:92, sat:44, items:2, mom:"new", quad:"open",
+   why:"<b>Two of your sources hit the same nerve this week.</b> Exit Five says buyers are 'craving realness' against the AI-slop tide; the Dave Gerhardt Show ran an episode on making AI content without the slop. Your brand-is-the-moat read: the flood of sameness makes human, distinctive work worth more, not less. The slop is your tailwind.",
+   ev:[{a:"Exit Five email today: 'so much AI slop out there, we’re all craving realness'",s:"Exit Five · your inbox (Aug 3)",u:"https://media.exitfive.com/5-b2b-webinar-plays-to-crush-your-competition"},
+       {a:"The Dave Gerhardt Show: 'How to Use AI for Content Without Creating Slop' (Eoin Clancy) — convergent signal, credited",s:"Exit Five podcast",u:"https://exitfive.com/podcast/"}]}
 ];
 
-const TOP3 = [1,2,3];
+const TOP3 = [13,1,2];
 
 const PROMPTS = [
+  {chan:"LinkedIn · positioning", theme:"The format isn't dead. The label is.", hook:"“Every few months someone declares a channel dead. Usually they just killed the name.”",
+   set:"Exit Five just crossed out 'webinar' and wrote 'live session.' That's positioning, not a product change. Your riff: before you abandon a format, check whether you abandoned the word and the tired execution instead. Reposition, don't retreat.",
+   ev:"Spark only (credited, not restated): today's Exit Five email struck 'webinar' for 'live session' and framed 'AI slop' vs 'craving realness.' The argument is yours — trigger-based positioning: reframe the moment, don't chase the obituary.",
+   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. Angle, led by RYAN'S positioning POV: marketers love to declare channels dead — webinars, cold email, whatever — when what actually died is the stale name and the tired execution, not the format. Use as a SPARK only (credited, do not restate their content): today's Exit Five email literally struck through the word 'webinar' and replaced it with 'live session,' and framed the real enemy as 'AI slop' while buyers are 'craving realness.' Ryan's take: that's a positioning move, not a product one — reposition and re-execute a format before you abandon it, and name the buying trigger it serves. Give one concrete example of a 'dead' channel that was really just mislabeled. Reader is the hero: the marketer about to kill a channel that still works. No CTA, never salesy. Credit Exit Five as the spark only."},
+
   {chan:"LinkedIn · signature", theme:"The Reclaimed Hours", hook:"“AI gave you back a day a week. Most leaders are quietly wasting it.”",
-   set:"The reclaimed 20-30% is going into more content, more channels, more dashboards. The win is the opposite: do less, point that time at the strategic calls that compound. The take nobody's making.",
+   set:"The reclaimed 20-30% is going into more content, more channels, more dashboards. The win is the opposite: do less, point that time at the strategic calls that compound.",
    ev:"Provocation only: Ruben Hassid on AI absorbing the grind; Gartner (via CMSWire) that 65% of CMOs expect AI to transform the role. The argument is yours — former VP who owned the number.",
-   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. This is Ryan's SIGNATURE angle — 'The Reclaimed Hours.' Thesis: AI has handed marketing leaders back 20-30% of their week, and nobody is asking the real question — what do you do AFTER? The contrarian, ownable answer from a former VP of Marketing: don't spend it doing MORE (more content, channels, dashboards). Spend it doing LESS, and reallocate the time to the strategic judgment, positioning, and brand calls AI structurally cannot make. Use the productivity reality only as a SETUP (AI absorbs the grind; Gartner says 65% of CMOs expect the role to transform) — do not relay anyone's article; the headline is leadership. Tie it to Ryan's belief that the human, distinctive work is the moat AI can't copy. Reader is the hero. No CTA, never salesy."},
+   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. This is Ryan's SIGNATURE angle — 'The Reclaimed Hours.' Thesis: AI has handed marketing leaders back 20-30% of their week, and nobody asks what you do AFTER. The ownable answer from a former VP: don't spend it doing MORE. Spend it doing LESS, and reallocate to the strategic, positioning, and brand calls AI structurally cannot make. Use the productivity reality only as a SETUP. Tie to Ryan's belief that human, distinctive work is the moat AI can't copy. Reader is the hero. No CTA, never salesy."},
 
   {chan:"LinkedIn · storytelling", theme:"B2B doesn't have to be boring", hook:"“B2B advertising is boring by default. I've got the receipts that it doesn't have to be.”",
-   set:"Your new pillar, led by proof. One real Fortra Automate campaign, the single story decision behind it, and what it changed. Nobody can plagiarize your own work.",
+   set:"Your storytelling pillar, led by proof. One real Fortra Automate campaign, the single story decision behind it, and what it changed. Nobody can plagiarize your own work.",
    ev:"Your own Fortra Automate storytelling work (pull real specifics from Clients/Fortra Automate — never invent outcomes). Your principle: story is the moat product parity can't copy.",
-   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first, and read Clients/Fortra Automate/ (Positioning, Company-and-Offer, Brief) for the REAL specifics — do NOT invent any outcome, metric, or quote. Angle: B2B advertising doesn't have to be boring, and you can prove it from your own work. Pick one real Fortra Automate campaign or asset Ryan produced, show the single storytelling decision behind it — the human tension he led with instead of the feature list — and what it changed. Land on his principle that story is the moat product parity can't copy. Reader is the hero: the marketer stuck shipping feature-dumps. No CTA, never salesy. This is Ryan's own work — cite no outside source."},
-
-  {chan:"LinkedIn · brand", theme:"“Make us look more professional”", hook:"“When a client says ‘make us look more professional,’ I hear a warning.”",
-   set:"Polished is table stakes. Distinctive is the moat. 'Professional' usually means 'like everyone else.' Your belief, from your own distinctiveness work — nothing borrowed.",
-   ev:"Your Brand-Distinctiveness-Notes: polished is table stakes, distinctive is the moat; commit to one thing that feels slightly too weird.",
-   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. Angle, entirely Ryan's own (from Brand-Distinctiveness-Notes.md): when a client asks to look 'more professional,' hear it as a warning — polished is table stakes, distinctive is the moat, and 'professional' usually resolves to 'like everyone else.' Make the case for committing to one distinctive thing that feels slightly too weird, and why the discomfort is the signal it's working. Reader is the hero: the brand blending into its category. No CTA, never salesy. No outside source — this is Ryan's belief."},
-
-  {chan:"LinkedIn · positioning", theme:"Map the trigger, not the pain point", hook:"“Stop mapping pain points. Map the trigger — the moment someone actually starts looking.”",
-   set:"Your own thesis, the same engine you run for clients: message to the buying trigger per vertical, not a generic pain point, and the whole system aligns. Someone else proved it too — nice, but the idea is yours.",
-   ev:"Your Trigger-Based-Messaging playbook: the intent signal is the moment, not the persona. Corroboration (not source): Diane Wiredu via Exit Five mapped triggers per vertical and got aligned messaging.",
-   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. Lead with RYAN'S own thesis from Trigger-Based-Messaging-Playbook.md: positioning that starts from the buying TRIGGER — the real-world event that makes someone start looking — beats positioning built on a generic pain point, because it aligns every asset to a moment. Use Diane Wiredu's result (via Exit Five) only as brief corroboration that others land on the same truth, credited — do NOT rebuild her list. Connect it to the intent engine Ryan already runs for clients. Reader is the hero: the marketer whose messaging sounds like everyone else's. No CTA, never salesy. Credit Exit Five / Diane Wiredu as corroboration only."}
+   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first, and read Clients/Fortra Automate/ for the REAL specifics — do NOT invent any outcome, metric, or quote. Angle: B2B advertising doesn't have to be boring, and you can prove it from your own work. Pick one real Fortra Automate campaign Ryan produced, show the single storytelling decision behind it — the human tension he led with instead of the feature list — and what it changed. Land on his principle that story is the moat product parity can't copy. Reader is the hero. No CTA, never salesy. Cite no outside source."}
 ];
 
 const qClass = {open:'q-open', crowded:'q-crowded', quiet:'q-quiet', fading:'q-fading'};

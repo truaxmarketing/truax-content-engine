@@ -77,6 +77,21 @@
   .note{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:13px 15px;font-size:13px;color:#c2c2d6;margin:16px 0 0}
   .note b{color:#fff}
   @media(max-width:900px){.three,.prompts{grid-template-columns:1fr}.meta{text-align:left}}
+
+  /* distribution plays panel */
+  .plays-wrap{margin-top:12px}
+  .plays-grad{height:6px;border-radius:3px;background:linear-gradient(90deg,#45e388,#9792E3 55%,#4a4a5e);margin:6px 0 18px}
+  .plays-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:900px){.plays-grid{grid-template-columns:1fr}}
+  .zone-head{display:flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;margin-bottom:12px;letter-spacing:.2px}
+  .tdot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+  .play{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+  .play .pn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink);margin-bottom:5px}
+  .play .pnote{font-size:12.5px;color:#c9c9dc;line-height:1.55;margin-bottom:8px}
+  .play .ptag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.3px}
+  .play.hot{border-left-color:var(--accent)} .play.warm{border-left-color:var(--peri)} .play.cool{border-left-color:#5a5a70}
+  .plays-foot{font-size:12px;color:var(--muted);margin-top:4px;font-style:italic}
+  .plays-src{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -130,6 +145,14 @@
   <h2>Ready to draft</h2>
   <p class="h2sub">Each angle copies a complete prompt. Paste it into a new Claude session and your linkedin-post / content skill takes it from there — grounded in your evidence and your voice profile.</p>
   <div class="prompts" id="prompts"></div>
+
+  <h2>Distribution plays</h2>
+  <p class="h2sub">A supporting layer — how to <em>ship</em> the ideas above, not what to say. What's working on LinkedIn right now, read by temperature. Perishable and dated on purpose. <span class="plays-src" id="playsupdated"></span></p>
+  <div class="plays-wrap">
+    <div class="plays-grad"></div>
+    <div class="plays-grid" id="plays"></div>
+    <div class="plays-foot" id="playsfoot"></div>
+  </div>
 
   <div class="note">
     <b>Sources are sparks, not scripts.</b> Every theme here carries your own POV, principle, or proof — not a restatement of someone else's post. <b>Storytelling &amp; B2B</b> is fueled by your own Fortra Automate work, which is impossible to plagiarize. Feeding the rest: Exit Five, Simon Sinek, and Ruben Hassid (from your inbox), plus trade press and a web sweep — used only to provoke a take, never to copy one. Scott Galloway joins once his first issue lands. Reddit stays out — network-blocked with no connector.
@@ -300,6 +323,34 @@ document.querySelectorAll('.copy').forEach(b=>{
     });
   });
 });
+
+const PLAYS = {
+  updated:"Updated 03 Aug 2026 · source: The Social Files (Tommy Clark)",
+  principle:"Principle underneath (durable): platforms reward dwell time and manufactured distribution. The tactics below cycle — that doesn't.",
+  zones:[
+    {temp:"hot", dot:"var(--accent)", label:"🔥 Working now", plays:[
+      {n:"Tweet-screenshot posts", d:"Screenshot a sharp tweet — keep the engagement metrics visible — and add your take. Spikes dwell time, which the algorithm pays back in reach.", t:"Social Files · Aug 3"},
+      {n:"Manufacture your reach", d:"Stop leaning on organic. 15–18 ICP connection requests/day (an accepted request auto-follows) plus 5–10 real comments. Automate the connects; never automate comments.", t:"Social Files · Aug 3"}
+    ]},
+    {temp:"warm", dot:"var(--peri)", label:"🌤️ Rising / worth testing", plays:[
+      {n:"LinkedIn articles", d:"Repost long-form you already have as a LinkedIn article. Helps AI answer-engine visibility and feeds Thought Leader Ads. Little downside.", t:"Social Files · Aug 3"},
+      {n:"Revisit X", d:"A mid-July algo shift is surfacing follower content again and engagement is up. If the founder has a base, redistribute the same long-form there.", t:"Social Files · Aug 3"}
+    ]},
+    {temp:"cool", dot:"#7a7a90", label:"🧊 Cooling", plays:[
+      {n:"Relying on organic reach", d:"LinkedIn organic reach is down year over year. Don't let a post stand on the algorithm alone — pair it with the outbound + comment motion above.", t:"Social Files · Aug 3"}
+    ]}
+  ]
+};
+(function(){
+  var u=document.getElementById('playsupdated'); if(u) u.textContent=PLAYS.updated;
+  var g=document.getElementById('plays');
+  if(g) g.innerHTML=PLAYS.zones.map(function(z){
+    return '<div class="zone"><div class="zone-head"><span class="tdot" style="background:'+z.dot+'"></span>'+z.label+'</div>'+
+      z.plays.map(function(p){return '<div class="play '+z.temp+'"><div class="pn">'+p.n+'</div><div class="pnote">'+p.d+'</div><div class="ptag">'+p.t+'</div></div>';}).join('')+
+      '</div>';
+  }).join('');
+  var ff=document.getElementById('playsfoot'); if(ff) ff.textContent=PLAYS.principle;
+})();
 </script>
 </body>
 </html>

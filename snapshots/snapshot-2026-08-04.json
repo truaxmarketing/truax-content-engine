@@ -1,6 +1,6 @@
 {
   "date": "2026-08-04",
-  "generated": "04 Aug 2026",
+  "generated": "04 Aug 2026 13:17 UTC",
   "cadenceTarget": "3 posts/week",
   "top3": [
     1,
@@ -8,7 +8,7 @@
     2
   ],
   "plays_updated": "Updated 03 Aug 2026 · source: The Social Files (Tommy Clark)",
-  "sources_note": "Aug 3 Exit Five (webinar->live session) + Aug 3 Social Files (State of Executive Content) carried; Dave Gerhardt Show through Jul 6; web sweep Aug 4 corroborated AI-sameness. Scott Galloway/Patrick Schaber: no new inbox issue. Reddit: blocked, no connector (pending).",
+  "sources_note": "Second refresh of 04 Aug 2026 (prior run 00:31 UTC built today's board from the 03 Aug Exit Five 'webinar->live session' email + 03 Aug Social Files 'State of Executive Content' + Aug 4 web sweep). This unattended run: web sweep re-confirmed the AI-sameness / brand-is-what-AI-can't-copy convergence (thecmo.com 2026 B2B trends; Schmidt Consulting Group B2B brand-positioning-2026). External newsletter/podcast pages (Exit Five, Simon Sinek, design Substacks) were NOT fetchable in the unattended run — WebFetch to those domains requires an interactive approval that isn't available on a scheduled fire, so no NEW inbox/newsletter signal beyond the carried 03-04 Aug pull. No material new signal => board carried forward unchanged, momentum flat vs the 00:31 baseline. Reddit: blocked, no connector (pending). Marketing OS folder not connected (scheduled cloud run) => used repo index.html as template per SOP.",
   "themes": [
     {
       "id": 1,
@@ -118,7 +118,7 @@
       "pov": 92,
       "sat": 77,
       "items": 2,
-      "mom": "up",
+      "mom": "flat",
       "quad": "crowded",
       "signature": false
     },
@@ -160,7 +160,7 @@
       "pov": 86,
       "sat": 64,
       "items": 2,
-      "mom": "up",
+      "mom": "flat",
       "quad": "crowded",
       "signature": false
     },

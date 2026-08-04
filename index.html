@@ -62,6 +62,9 @@
   .sigstar{color:var(--accent);font-weight:700;margin-left:5px}
   .tag{font-size:10px;color:var(--muted);font-family:var(--mono)}
   .mom-new{color:var(--muted);font-size:11px;font-style:italic}
+  .mom-up{color:var(--accent);font-size:13px;font-weight:700}
+  .mom-down{color:#ff6b6b;font-size:13px;font-weight:700}
+  .mom-flat{color:#7b7b90;font-size:13px}
   .prompts{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
   .pcard{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px;display:flex;flex-direction:column}
   .chan{font-size:10.5px;font-family:var(--mono);color:var(--accent);background:var(--accent-dim);border:1px solid rgba(69,227,136,.3);padding:2px 8px;border-radius:6px;align-self:flex-start;margin-bottom:9px}
@@ -103,7 +106,7 @@
       <div class="sub">What the market is asking for, scored against your practice and your voice.</div>
     </div>
     <div class="meta">
-      <b>DATA AS OF</b><span>03 Aug 2026</span>
+      <b>DATA AS OF</b><span>04 Aug 2026</span>
       <b style="margin-top:8px">PILLARS</b><span>Brand · Positioning &amp; GTM · Leadership · Storytelling &amp; B2B</span>
       <b style="margin-top:8px">LIBRARY</b><span><a href="/library/" style="color:#45e388;text-decoration:none;font-weight:600">Open content library &rarr;</a></span>
     </div>
@@ -160,7 +163,7 @@
 
   <div class="foot">
     <p><b>How to read the scores.</b> Five signals, 0–100. <b>Engagement</b> and <b>Saturation</b> are estimates from how often a theme recurs across sources and how prominent it is in search — not platform metrics. Treat them as directional. <b>Fit</b> is buyer-weighted toward the people who hire you (founders, new marketing leaders, PE operators, and the C-suite). <b>POV fit</b> is scored against your beliefs — brand as the moat, clarity, objective truth, story over the feature-dump. <b>Composite</b> = 30% Fit + 25% POV + 25% Engagement + 20% (100 − Saturation).</p>
-    <p><b>The Reclaimed Hours</b> is your emphasized signature thesis: AI handed leaders back 20–30% of their week, and nobody's asking what to do after — your former-VP answer is the reallocation to the strategic work AI can't do. It's allowed to headline. <b>AI otherwise seasons, never leads.</b> <b>Momentum</b> reads "new" until the daily 6:00 AM run stacks about a week of snapshots. Voice: <span class="tag">About-Ryan/Voice-Profile.md</span>.</p>
+    <p><b>The Reclaimed Hours</b> is your emphasized signature thesis: AI handed leaders back 20–30% of their week, and nobody's asking what to do after — your former-VP answer is the reallocation to the strategic work AI can't do. It's allowed to headline. <b>AI otherwise seasons, never leads.</b> <b>Momentum</b> is live against the Aug 3 baseline (→ steady, ▲ rising, ▼ cooling) — most themes hold steady one day on, with movers where fresh signal landed. Voice: <span class="tag">About-Ryan/Voice-Profile.md</span>.</p>
   </div>
 </div>
 
@@ -169,80 +172,82 @@ const PC = {brand:'var(--brand)', positioning:'var(--positioning)', leadership:'
 const PLABEL = {brand:'Brand is the moat', positioning:'Positioning & GTM', leadership:'Marketing leadership', storytelling:'Storytelling & B2B'};
 
 const THEMES = [
-  {id:1, t:"The Reclaimed Hours: AI gave you back a day a week — now what?", pillar:"leadership", signature:true, score:82.4, eng:64, fit:90, pov:95, sat:22, items:3, mom:"new", quad:"open",
+  {id:1, t:"The Reclaimed Hours: AI gave you back a day a week — now what?", pillar:"leadership", signature:true, score:82.4, eng:64, fit:90, pov:95, sat:22, items:3, mom:"flat", quad:"open",
    why:"<b>Your signature angle, and it's open field.</b> Everyone's talking about baking AI in. Nobody's asking what a leader does with the 20-30% it hands back. Your former-VP answer: don't do more — do less, and point that time at the strategic calls AI can't make.",
    ev:[{a:"AI is absorbing the production grind (the spark, not the story) — Ruben Hassid, from your inbox",s:"used as provocation only",u:"https://ruben.substack.com/p/1800-hours-of-claude"},
        {a:"65% of CMOs expect AI to transform the role within two years — a hook, not the argument (Gartner)",s:"via CMSWire",u:"https://www.cmswire.com/digital-marketing/why-the-cmo-job-is-being-rewritten-in-real-time-and-how-to-land-on-the-right-side/"},
        {a:"The argument is yours: former VP of Marketing who built the teams and owned the number",s:"Truax Marketing",u:"#"}]},
 
-  {id:2, t:"B2B doesn't have to be boring — and you've got the receipts", pillar:"storytelling", score:78.4, eng:58, fit:88, pov:94, sat:30, items:2, mom:"new", quad:"open",
+  {id:2, t:"B2B doesn't have to be boring — and you've got the receipts", pillar:"storytelling", score:78.4, eng:58, fit:88, pov:94, sat:30, items:2, mom:"flat", quad:"open",
    why:"<b>Your new pillar, led by your own work.</b> Pull one Fortra Automate campaign and show the single story decision that made a 20-year B2B SaaS feel alive. Proof beats theory, and it's impossible to plagiarize.",
    ev:[{a:"Your own Fortra Automate storytelling work — pull the real specifics from Clients/Fortra Automate",s:"Truax Marketing · your proof",u:"#"},
        {a:"Your principle: story is the moat product parity can't copy; the feature-dump is why B2B ads die",s:"Content-First / Brand notes",u:"#"}]},
 
-  {id:3, t:"“Make us look more professional” is a warning, not a brief", pillar:"brand", score:78.0, eng:56, fit:86, pov:95, sat:28, items:1, mom:"new", quad:"open",
+  {id:3, t:"“Make us look more professional” is a warning, not a brief", pillar:"brand", score:78.0, eng:56, fit:86, pov:95, sat:28, items:1, mom:"flat", quad:"open",
    why:"<b>Straight from your own belief — nothing borrowed.</b> Polished is table stakes. Distinctive is the moat. When a client asks to look more professional, they're usually asking to look like everyone else. Say the uncomfortable thing.",
    ev:[{a:"Your Brand-Distinctiveness-Notes: polished is table stakes, distinctive is the moat; commit to one thing that feels slightly too weird",s:"Truax Marketing · your framework",u:"#"}]},
 
-  {id:4, t:"The feature-dump is why your B2B ad died", pillar:"storytelling", score:73.7, eng:56, fit:84, pov:90, sat:40, items:1, mom:"new", quad:"open",
+  {id:4, t:"The feature-dump is why your B2B ad died", pillar:"storytelling", score:73.7, eng:56, fit:84, pov:90, sat:40, items:1, mom:"flat", quad:"open",
    why:"<b>Your craft, your principle.</b> Most B2B ads list capabilities and call it a day. Make the case for leading with a human tension instead, and show the reframe with your own before-and-after.",
    ev:[{a:"Your principle, provable with your own client work — story over specs",s:"Truax Marketing · your POV",u:"#"}]},
 
-  {id:5, t:"Map the trigger, not the pain point", pillar:"positioning", score:72.3, eng:56, fit:85, pov:88, sat:46, items:2, mom:"new", quad:"crowded",
+  {id:5, t:"Map the trigger, not the pain point", pillar:"positioning", score:72.3, eng:56, fit:85, pov:88, sat:46, items:2, mom:"flat", quad:"crowded",
    why:"",
    ev:[{a:"Your own trigger-based GTM thesis — the intent signal is the moment, not the persona (the same engine you run for clients)",s:"Trigger-Based-Messaging-Playbook",u:"#"},
        {a:"Someone else proved it too: Diane Wiredu (Lion Words) via Exit Five — corroboration, not the source",s:"Exit Five · Dave Gerhardt",u:"https://exitfive.com/newsletter/5-plays-these-b2b-marketers-said-worked-in-h1-2026/"}]},
 
-  {id:6, t:"Tenure hit 4.1 years because the role outgrew the org chart", pillar:"leadership", score:72.2, eng:68, fit:86, pov:84, sat:58, items:1, mom:"new", quad:"crowded",
+  {id:6, t:"Tenure hit 4.1 years because the role outgrew the org chart", pillar:"leadership", score:72.2, eng:68, fit:86, pov:84, sat:58, items:1, mom:"flat", quad:"crowded",
    ev:[{a:"Spencer Stuart: CMO tenure fell to 4.1 years (the hook). The read — what the reframed role actually demands — is yours, from the seat you held",s:"via CMSWire",u:"https://www.cmswire.com/digital-marketing/why-the-cmo-job-is-being-rewritten-in-real-time-and-how-to-land-on-the-right-side/"}]},
 
-  {id:7, t:"Emotion outsells logic in B2B — and you can prove it", pillar:"storytelling", score:72.0, eng:64, fit:80, pov:88, sat:50, items:2, mom:"new", quad:"crowded",
+  {id:7, t:"Emotion outsells logic in B2B — and you can prove it", pillar:"storytelling", score:72.0, eng:64, fit:80, pov:88, sat:50, items:2, mom:"flat", quad:"crowded",
    ev:[{a:"Your principle + your own work as proof",s:"Truax Marketing · your POV",u:"#"},
        {a:"Cultural nod: Telemundo's emotionally-driven World Cup coverage out-pulled the rational cut (Forbes) — a hook to borrow, credited",s:"Forbes · Isaac Mizrahi",u:"https://www.forbes.com/sites/isaacmizrahi/2026/07/23/four-lessons-from-the-2026-world-cup-that-will-reshape-how-brands-reach-american-audiences/"}]},
 
-  {id:8, t:"AI is giving every brand the same voice — distinctiveness is the human override", pillar:"brand", score:70.6, eng:76, fit:82, pov:92, sat:80, items:1, mom:"new", quad:"crowded",
-   ev:[{a:"Hook: Coca-Cola's 70,000 AI clips drew backlash for feeling soulless (Forbes). The override — your 8-asset distinctiveness rubric — is the actual argument",s:"Forbes · Elizabeth Ross",u:"https://www.forbes.com/councils/forbesbusinesscouncil/2026/02/17/why-ai-is-drowning-your-marketing-into-a-sea-of-sameness/"}]},
+  {id:8, t:"AI is giving every brand the same voice — distinctiveness is the human override", pillar:"brand", score:71.7, eng:76, fit:82, pov:92, sat:77, items:2, mom:"up", quad:"crowded",
+   ev:[{a:"Hook: Coca-Cola's 70,000 AI clips drew backlash for feeling soulless (Forbes). The override — your 8-asset distinctiveness rubric — is the actual argument",s:"Forbes · Elizabeth Ross",u:"https://www.forbes.com/councils/forbesbusinesscouncil/2026/02/17/why-ai-is-drowning-your-marketing-into-a-sea-of-sameness/"},
+       {a:"Convergent this week: the 'what AI can't copy is strategic positioning, restraint, and what a brand refuses to be' argument is showing up across the trade press (Freshly Brewed Marketing; Series X) — corroboration, the 8-asset rubric is yours",s:"web sweep · Aug 4",u:"https://freshlybrewed.co/insights-news/brand-identity-in-2026-what-ai-cant-copy/"}]},
 
-  {id:9, t:"Lead like you own the number — budgets flatlined at 7.7%", pillar:"leadership", score:68.0, eng:58, fit:82, pov:82, sat:58, items:1, mom:"new", quad:"crowded",
+  {id:9, t:"Lead like you own the number — budgets flatlined at 7.7%", pillar:"leadership", score:68.0, eng:58, fit:82, pov:82, sat:58, items:1, mom:"flat", quad:"crowded",
    ev:[{a:"Gartner: budgets flatlined at 7.7% of revenue (the hook). The leadership move is yours — you carried a number",s:"via CMSWire",u:"https://www.cmswire.com/digital-marketing/why-the-cmo-job-is-being-rewritten-in-real-time-and-how-to-land-on-the-right-side/"}]},
 
-  {id:10, t:"A great B2B ad, dissected — with real kudos to whoever made it", pillar:"storytelling", score:67.6, eng:54, fit:72, pov:82, sat:40, items:1, mom:"new", quad:"quiet",
+  {id:10, t:"A great B2B ad, dissected — with real kudos to whoever made it", pillar:"storytelling", score:67.6, eng:54, fit:72, pov:82, sat:40, items:1, mom:"flat", quad:"quiet",
    ev:[{a:"Pick an outside campaign you genuinely admire, credit the creator, and pull the one decision that ties back to your principles — appreciation, not appropriation",s:"Truax Marketing · your lens",u:"#"}]},
 
-  {id:11, t:"Everyone in your category says the same safe thing", pillar:"positioning", score:67.5, eng:56, fit:84, pov:86, sat:66, items:1, mom:"new", quad:"crowded",
-   ev:[{a:"Your clarity belief: the brave, specific, true thing beats the polished sound-alike. Your POV, your examples",s:"Truax Marketing · your POV",u:"#"}]},
+  {id:11, t:"Everyone in your category says the same safe thing", pillar:"positioning", score:68.5, eng:56, fit:84, pov:86, sat:64, items:2, mom:"up", quad:"crowded",
+   ev:[{a:"Your clarity belief: the brave, specific, true thing beats the polished sound-alike. Your POV, your examples",s:"Truax Marketing · your POV",u:"#"},
+       {a:"Louis Grenier ('How to Stand Out in B2B Marketing,' Dave Gerhardt Show) argues the same from another seat — a spark, not the script; the examples are yours",s:"Exit Five podcast",u:"https://exitfive.com/podcast/"}]},
 
-  {id:12, t:"The metric most marketing leaders optimize is quietly killing the brand", pillar:"leadership", score:67.0, eng:52, fit:80, pov:84, sat:55, items:1, mom:"new", quad:"fading",
+  {id:12, t:"The metric most marketing leaders optimize is quietly killing the brand", pillar:"leadership", score:67.0, eng:52, fit:80, pov:84, sat:55, items:1, mom:"flat", quad:"fading",
    ev:[{a:"Your experience-driven take on short-term metrics vs brand. Sinek's “you get the behavior you measure” is a nudge, not the argument",s:"nudge: Simon Sinek",u:"https://simonsinek.com/stories"}]},
 
-  {id:13, t:"The format isn't dead. The label is.", pillar:"positioning", signature:false, score:81.0, eng:62, fit:90, pov:93, sat:24, items:2, mom:"new", quad:"open",
-   why:"<b>Straight from your inbox this morning — and it's a positioning play.</b> Exit Five just crossed out the word 'webinar' and wrote 'live session,' then named the enemy as 'AI slop' while buyers are 'craving realness.' Your riff, not theirs: marketers keep declaring channels dead when what actually died was the tired execution and the stale name. Reposition the format before you abandon it.",
-   ev:[{a:"Exit Five email today — struck 'webinar,' wrote 'live session,' framed the enemy as 'AI slop' while buyers are 'craving realness'",s:"Exit Five · your inbox (Aug 3)",u:"https://media.exitfive.com/5-b2b-webinar-plays-to-crush-your-competition"},
+  {id:13, t:"The format isn't dead. The label is.", pillar:"positioning", signature:false, score:80.5, eng:62, fit:90, pov:93, sat:24, items:2, mom:"flat", quad:"open",
+   why:"<b>Landed in your inbox Aug 3 — and it's a positioning play.</b> Exit Five just crossed out the word 'webinar' and wrote 'live session,' then named the enemy as 'AI slop' while buyers are 'craving realness.' Your riff, not theirs: marketers keep declaring channels dead when what actually died was the tired execution and the stale name. Reposition the format before you abandon it.",
+   ev:[{a:"Exit Five email (Aug 3) — struck 'webinar,' wrote 'live session,' framed the enemy as 'AI slop' while buyers are 'craving realness'",s:"Exit Five · your inbox (Aug 3)",u:"https://media.exitfive.com/5-b2b-webinar-plays-to-crush-your-competition"},
        {a:"The argument is yours: your trigger-based positioning thesis — reframe the moment the format serves, don't chase its obituary",s:"Trigger-Based-Messaging-Playbook · your POV",u:"#"}]},
 
-  {id:14, t:"AI slop is quietly raising the price of real", pillar:"brand", signature:false, score:77.5, eng:70, fit:86, pov:92, sat:44, items:2, mom:"new", quad:"open",
+  {id:14, t:"AI slop is quietly raising the price of real", pillar:"brand", signature:false, score:77.5, eng:70, fit:86, pov:92, sat:44, items:2, mom:"flat", quad:"open",
    why:"<b>Two of your sources hit the same nerve this week.</b> Exit Five says buyers are 'craving realness' against the AI-slop tide; the Dave Gerhardt Show ran an episode on making AI content without the slop. Your brand-is-the-moat read: the flood of sameness makes human, distinctive work worth more, not less. The slop is your tailwind.",
-   ev:[{a:"Exit Five email today: 'so much AI slop out there, we’re all craving realness'",s:"Exit Five · your inbox (Aug 3)",u:"https://media.exitfive.com/5-b2b-webinar-plays-to-crush-your-competition"},
+   ev:[{a:"Exit Five email (Aug 3): 'so much AI slop out there, we’re all craving realness'",s:"Exit Five · your inbox (Aug 3)",u:"https://media.exitfive.com/5-b2b-webinar-plays-to-crush-your-competition"},
        {a:"The Dave Gerhardt Show: 'How to Use AI for Content Without Creating Slop' (Eoin Clancy) — convergent signal, credited",s:"Exit Five podcast",u:"https://exitfive.com/podcast/"}]}
 ];
 
-const TOP3 = [13,1,2];
+const TOP3 = [1,13,2];
 
 const PROMPTS = [
-  {chan:"LinkedIn · positioning", theme:"The format isn't dead. The label is.", hook:"“Every few months someone declares a channel dead. Usually they just killed the name.”",
-   set:"Exit Five just crossed out 'webinar' and wrote 'live session.' That's positioning, not a product change. Your riff: before you abandon a format, check whether you abandoned the word and the tired execution instead. Reposition, don't retreat.",
-   ev:"Spark only (credited, not restated): today's Exit Five email struck 'webinar' for 'live session' and framed 'AI slop' vs 'craving realness.' The argument is yours — trigger-based positioning: reframe the moment, don't chase the obituary.",
-   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. Angle, led by RYAN'S positioning POV: marketers love to declare channels dead — webinars, cold email, whatever — when what actually died is the stale name and the tired execution, not the format. Use as a SPARK only (credited, do not restate their content): today's Exit Five email literally struck through the word 'webinar' and replaced it with 'live session,' and framed the real enemy as 'AI slop' while buyers are 'craving realness.' Ryan's take: that's a positioning move, not a product one — reposition and re-execute a format before you abandon it, and name the buying trigger it serves. Give one concrete example of a 'dead' channel that was really just mislabeled. Reader is the hero: the marketer about to kill a channel that still works. No CTA, never salesy. Credit Exit Five as the spark only."},
-
   {chan:"LinkedIn · signature", theme:"The Reclaimed Hours", hook:"“AI gave you back a day a week. Most leaders are quietly wasting it.”",
    set:"The reclaimed 20-30% is going into more content, more channels, more dashboards. The win is the opposite: do less, point that time at the strategic calls that compound.",
    ev:"Provocation only: Ruben Hassid on AI absorbing the grind; Gartner (via CMSWire) that 65% of CMOs expect AI to transform the role. The argument is yours — former VP who owned the number.",
-   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. This is Ryan's SIGNATURE angle — 'The Reclaimed Hours.' Thesis: AI has handed marketing leaders back 20-30% of their week, and nobody asks what you do AFTER. The ownable answer from a former VP: don't spend it doing MORE. Spend it doing LESS, and reallocate to the strategic, positioning, and brand calls AI structurally cannot make. Use the productivity reality only as a SETUP. Tie to Ryan's belief that human, distinctive work is the moat AI can't copy. Reader is the hero. No CTA, never salesy."},
+   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. This is Ryan's SIGNATURE angle — 'The Reclaimed Hours.' Thesis: AI has handed marketing leaders back 20-30% of their week, and nobody asks what you do AFTER. The ownable answer from a former VP: don't spend it doing MORE. Spend it doing LESS, and reallocate to the strategic, positioning, and brand calls AI structurally cannot make. Use the productivity reality only as a SETUP. Tie to Ryan's belief that human, distinctive work is the moat AI can't copy. Reader is the hero. No CTA, never salesy. Distribution move: don't let it ride on organic — the same day, pair the post with the manufactured-reach motion (15–18 ICP connection requests via HeyReach + 5–10 genuine, human comments; Social Files, Aug 3)."},
+
+  {chan:"LinkedIn · positioning", theme:"The format isn't dead. The label is.", hook:"“Every few months someone declares a channel dead. Usually they just killed the name.”",
+   set:"Exit Five just crossed out 'webinar' and wrote 'live session.' That's positioning, not a product change. Your riff: before you abandon a format, check whether you abandoned the word and the tired execution instead. Reposition, don't retreat.",
+   ev:"Spark only (credited, not restated): the Aug 3 Exit Five email struck 'webinar' for 'live session' and framed 'AI slop' vs 'craving realness.' The argument is yours — trigger-based positioning: reframe the moment, don't chase the obituary.",
+   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice. Angle, led by RYAN'S positioning POV: marketers love to declare channels dead — webinars, cold email, whatever — when what actually died is the stale name and the tired execution, not the format. Use as a SPARK only (credited, do not restate their content): the Aug 3 Exit Five email literally struck through the word 'webinar' and replaced it with 'live session,' and framed the real enemy as 'AI slop' while buyers are 'craving realness.' Ryan's take: that's a positioning move, not a product one — reposition and re-execute a format before you abandon it, and name the buying trigger it serves. Give one concrete example of a 'dead' channel that was really just mislabeled. Reader is the hero: the marketer about to kill a channel that still works. No CTA, never salesy. Credit Exit Five as the spark only. Distribution move: ship it as a dwell-time post (tweet-screenshot style with the engagement metrics left visible) or repost the long-form as a LinkedIn article for AEO and Thought Leader Ads (Social Files, Aug 3)."},
 
   {chan:"LinkedIn · storytelling", theme:"B2B doesn't have to be boring", hook:"“B2B advertising is boring by default. I've got the receipts that it doesn't have to be.”",
    set:"Your storytelling pillar, led by proof. One real Fortra Automate campaign, the single story decision behind it, and what it changed. Nobody can plagiarize your own work.",
    ev:"Your own Fortra Automate storytelling work (pull real specifics from Clients/Fortra Automate — never invent outcomes). Your principle: story is the moat product parity can't copy.",
-   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first, and read Clients/Fortra Automate/ for the REAL specifics — do NOT invent any outcome, metric, or quote. Angle: B2B advertising doesn't have to be boring, and you can prove it from your own work. Pick one real Fortra Automate campaign Ryan produced, show the single storytelling decision behind it — the human tension he led with instead of the feature list — and what it changed. Land on his principle that story is the moat product parity can't copy. Reader is the hero. No CTA, never salesy. Cite no outside source."}
+   prompt:"Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first, and read Clients/Fortra Automate/ for the REAL specifics — do NOT invent any outcome, metric, or quote. Angle: B2B advertising doesn't have to be boring, and you can prove it from your own work. Pick one real Fortra Automate campaign Ryan produced, show the single storytelling decision behind it — the human tension he led with instead of the feature list — and what it changed. Land on his principle that story is the moat product parity can't copy. Reader is the hero. No CTA, never salesy. Cite no outside source. Distribution move: lead with the campaign's key visual as an infographic or essay-screenshot to lift dwell time, then repurpose the write-up as a LinkedIn article (Social Files, Aug 3)."}
 ];
 
 const qClass = {open:'q-open', crowded:'q-crowded', quiet:'q-quiet', fading:'q-fading'};
@@ -296,12 +301,13 @@ document.getElementById('top3').innerHTML = TOP3.map(id=>{
 })();
 
 document.getElementById('boardcount').textContent = THEMES.length+" active themes.";
+const MOM={up:'<span class="mom-up" title="up vs Aug 3">▲</span>',down:'<span class="mom-down" title="down vs Aug 3">▼</span>',flat:'<span class="mom-flat" title="steady vs Aug 3">→</span>',new:'<span class="mom-new">new</span>'};
 const sorted=[...THEMES].sort((a,b)=>b.score-a.score);
 document.getElementById('board').innerHTML = sorted.map(t=>`<tr>
   <td><span class="bar" style="background:${PC[t.pillar]}"></span>${t.t}${t.signature?'<span class="sigstar">★</span>':''}</td>
   <td><span class="tag">${PLABEL[t.pillar]}</span></td>
   <td class="n tp">${t.score.toFixed(1)}</td>
-  <td class="n"><span class="mom-new">new</span></td>
+  <td class="n">${MOM[t.mom]||MOM.new}</td>
   <td class="n">${t.eng}</td><td class="n">${t.fit}</td><td class="n">${t.pov}</td><td class="n">${t.sat}</td>
   <td class="n">${t.items}</td>
 </tr>`).join('');

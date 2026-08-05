@@ -27,25 +27,26 @@
     font-weight:600;font-size:13.5px;border:1px solid var(--line);padding:8px 14px;
     border-radius:9px;display:inline-block;transition:.15s}
   .backlink a:hover{border-color:var(--p2)}
-  .sub{color:var(--dim);font-size:15px;margin:14px 0 0;max-width:680px;line-height:1.6}
-  .how{background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:18px 22px;margin:24px 0 8px}
-  .how h3{font-family:'Space Grotesk';font-size:12px;letter-spacing:.08em;
-    text-transform:uppercase;margin:0 0 10px;color:var(--green)}
-  .how ol{margin:0;padding-left:20px;color:var(--dim);font-size:13.5px;line-height:1.85}
-  .how b{color:var(--text)}
+  .sub{color:var(--dim);font-size:15px;margin:14px 0 0;max-width:700px;line-height:1.6}
   .explain{background:var(--panel);border:1px solid var(--line);border-radius:14px;
-    padding:20px 22px;margin:14px 0 8px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    padding:20px 22px;margin:22px 0 8px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
   .explain h3{font-family:'Space Grotesk';font-size:13px;letter-spacing:.06em;
     text-transform:uppercase;margin:0 0 8px}
   .explain .eng h3{color:var(--p2)} .explain .lib h3{color:var(--green)}
   .explain p{margin:0;color:var(--dim);font-size:13.5px;line-height:1.6}
-  .seriesbar{display:flex;align-items:baseline;gap:14px;margin:44px 0 4px}
-  .seriesbar h2{font-family:'Space Grotesk';font-weight:700;font-size:21px;margin:0}
-  .seriesbar .count{color:var(--dim);font-size:13px;font-family:'JetBrains Mono'}
-  .seriesnote{color:var(--dim);font-size:13.5px;margin:6px 0 22px;line-height:1.6}
+  .how{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px 22px;margin:0 0 18px}
+  .how h3{font-family:'Space Grotesk';font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;margin:0 0 10px;color:var(--green)}
+  .how ol{margin:0;padding-left:20px;color:var(--dim);font-size:13.5px;line-height:1.85}
+  .how b{color:var(--text)}
+  .shelfbar{display:flex;align-items:baseline;gap:14px;margin:44px 0 4px}
+  .shelfbar h2{font-family:'Space Grotesk';font-weight:700;font-size:21px;margin:0}
+  .shelfbar .count{color:var(--dim);font-size:13px;font-family:'JetBrains Mono'}
+  .shelfnote{color:var(--dim);font-size:13.5px;margin:6px 0 22px;line-height:1.6;max-width:760px}
   .grid{display:grid;grid-template-columns:1fr;gap:22px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card.live{border-color:rgba(69,227,136,.35)}
   .card .thumb{background:#fff;display:block;width:100%;border-bottom:1px solid var(--line)}
   .card .thumb img{display:block;width:100%;height:auto}
   .body{padding:22px 24px 24px}
@@ -53,11 +54,16 @@
   .kicker{font-family:'JetBrains Mono';font-size:11.5px;color:var(--p2);letter-spacing:.05em}
   .pill{font-family:'JetBrains Mono';font-size:11px;padding:4px 10px;border-radius:20px;
     background:rgba(69,227,136,.12);color:var(--green);border:1px solid rgba(69,227,136,.3)}
+  .pill.published{background:rgba(69,227,136,.18);color:var(--green);border-color:rgba(69,227,136,.5)}
+  .pill.ready{background:transparent;color:var(--dim);border:1px solid var(--line)}
+  .pubmeta{font-family:'JetBrains Mono';font-size:11.5px;color:var(--green);margin:8px 0 14px;letter-spacing:.2px}
+  .pubmeta .pubdim{color:var(--dim)}
+  .pubmeta a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
   .card h3{font-family:'Space Grotesk';font-weight:700;font-size:20px;margin:10px 0 4px}
-  .role{color:var(--dim);font-size:13px;margin:0 0 16px}
+  .role{color:var(--dim);font-size:13px;margin:0 0 6px}
   .copy{white-space:pre-wrap;font-size:14.5px;line-height:1.62;color:#e6e6f2;
     background:var(--panel2);border:1px solid var(--line);border-radius:10px;
-    padding:18px 18px;margin:0 0 16px}
+    padding:18px 18px;margin:10px 0 16px}
   .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
   .btn{font-family:'Space Grotesk';font-weight:600;font-size:12.5px;text-decoration:none;
     padding:9px 15px;border-radius:9px;border:1px solid var(--line);color:var(--text);
@@ -82,16 +88,7 @@
     <h1>Content Library</h1>
   </div>
   <p class="backlink"><a href="/">&larr; Back to the Engine (themes &amp; ideas dashboard)</a></p>
-  <p class="sub">Your finished, ready-to-post content — and the console you post it from. Full copy, exact formatting, one-click to clipboard.</p>
-
-  <div class="how">
-    <h3>Post to LinkedIn in 3 steps</h3>
-    <ol>
-      <li>Hit <b>Copy text</b> on the post you want, then paste into a new LinkedIn post (<b>Cmd/Ctrl + V</b>). Every line break comes with it.</li>
-      <li>Click <b>Save image</b> to grab the PNG, then use LinkedIn's photo button to attach it. (Or just drag the picture straight into the post box.)</li>
-      <li>Post. That's it.</li>
-    </ol>
-  </div>
+  <p class="sub">Your content record: what's gone live, and what's queued next. Published posts stay up top as a permanent archive; drafts wait below with one-click copy.</p>
 
   <div class="explain">
     <div class="eng">
@@ -99,25 +96,26 @@
       <p>The Content Topic Engine refreshes every morning, scores themes, and hands you tomorrow's ideas. It's the ideation surface — always changing.</p>
     </div>
     <div class="lib">
-      <h3>The Library · looks back</h3>
-      <p>This vault holds the finished work. Posts and visuals live here permanently, grouped into series you can reference and rerun.</p>
+      <h3>The Library · your record</h3>
+      <p>Two shelves. <b style="color:var(--green)">Published</b> is the permanent archive of what went live. <b>Ready to post</b> is the queue. When a post goes out, it moves up.</p>
     </div>
   </div>
 
-  <div class="seriesbar">
-    <h2>Reclaimed Hours</h2>
-    <span class="count">3 posts · marketing leadership</span>
+  <div class="shelfbar">
+    <h2>Published</h2>
+    <span class="count">1 live</span>
   </div>
-  <p class="seriesnote">What to do with the time AI handed back. This series set the house style — raw hand-drawn line art, neon green and purple on white. The three posts chain: the stakes, the trap, the escape.</p>
+  <p class="shelfnote">What's gone out — your permanent record. Dated, and clickable back to the live post once you send me the link. Over time this becomes your thought-leadership track record, with room to log how each one performed.</p>
 
   <div class="grid">
 
-    <div class="card">
+    <div class="card live">
       <span class="thumb"><img src="reclaimed-hours/visuals/The-Compounding-Hour.png" alt="The Compounding Hour visual"></span>
       <div class="body">
-        <div class="rowtop"><span class="kicker">POST 1 · SETS THE STAKES</span><span class="pill">READY TO POST</span></div>
+        <div class="rowtop"><span class="kicker">RECLAIMED HOURS · POST 1</span><span class="pill published">PUBLISHED</span></div>
         <h3>The Compounding Hour</h3>
         <p class="role">The reclaimed hour has two exits — one melts, one compounds.</p>
+        <p class="pubmeta">Posted Aug 4, 2026 &middot; <a href="https://www.linkedin.com/feed/update/urn:li:activity:7490454056289677312/" target="_blank" rel="noopener">View live post &rarr;</a></p>
         <div class="copy" id="p1">AI didn't make you faster.
 
 It gave you a decision you're not making.
@@ -148,10 +146,29 @@ Melt it and you stay busy. Compound it and you build something that pays you for
       </div>
     </div>
 
+  </div>
+
+  <div class="shelfbar" style="margin-top:48px">
+    <h2>Ready to post</h2>
+    <span class="count">2 queued · Reclaimed Hours</span>
+  </div>
+  <p class="shelfnote">Finished and waiting. Copy the text, grab the image, post. When one goes live, tell me and it moves up to Published.</p>
+
+  <div class="how">
+    <h3>Post to LinkedIn in 3 steps</h3>
+    <ol>
+      <li>Hit <b>Copy text</b>, then paste into a new LinkedIn post (<b>Cmd/Ctrl + V</b>). Every line break comes with it.</li>
+      <li>Click <b>Save image</b> to grab the PNG, then attach it (or drag it straight into the post box).</li>
+      <li>Post. Then tell me — it moves up to Published.</li>
+    </ol>
+  </div>
+
+  <div class="grid">
+
     <div class="card">
       <span class="thumb"><img src="reclaimed-hours/visuals/The-Refill-Reflex.png" alt="The Refill Reflex visual"></span>
       <div class="body">
-        <div class="rowtop"><span class="kicker">POST 2 · NAMES THE TRAP</span><span class="pill">READY TO POST</span></div>
+        <div class="rowtop"><span class="kicker">RECLAIMED HOURS · POST 2 · NAMES THE TRAP</span><span class="pill ready">READY TO POST</span></div>
         <h3>The Refill Reflex</h3>
         <p class="role">Why the reclaimed hour vanishes — the reflex to refill it.</p>
         <div class="copy" id="p2">AI didn't give you time back.
@@ -185,7 +202,7 @@ One is a reflex. The other is a decision. 🟢</div>
     <div class="card">
       <span class="thumb"><img src="reclaimed-hours/visuals/The-Short-List.png" alt="The Short List visual"></span>
       <div class="body">
-        <div class="rowtop"><span class="kicker">POST 3 · GIVES THE ESCAPE</span><span class="pill">READY TO POST</span></div>
+        <div class="rowtop"><span class="kicker">RECLAIMED HOURS · POST 3 · GIVES THE ESCAPE</span><span class="pill ready">READY TO POST</span></div>
         <h3>The Short List</h3>
         <p class="role">The three moves actually worth the reclaimed hour.</p>
         <div class="copy" id="p3">"What do I do with the time AI gave me?"
@@ -216,7 +233,7 @@ AI didn't hand you a to-do list. It handed you room to finally do the work that 
 
   </div>
 
-  <p class="foot">House style: white background, black hand-drawn ink, neon green #45e388, purples #731DD8 / #9792E3, Comic Neue.<br>Writing standard: bold contrarian open · real meat, never just an opinion · reader is the hero · never end on "Thoughts?"<br>New series drop in as sibling folders. The engine feeds this; this is where the keepers live.</p>
+  <p class="foot">House style: white background, black hand-drawn ink, neon green #45e388, purples #731DD8 / #9792E3, Comic Neue.<br>Writing standard: bold contrarian open · real meat, never just an opinion · reader is the hero · never end on "Thoughts?"<br>Two shelves: Published is the permanent record; Ready to post is the queue. Tell me when a post goes live and it moves up.</p>
 
 </div>
 

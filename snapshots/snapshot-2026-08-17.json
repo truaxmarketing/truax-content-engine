@@ -2,5 +2,5 @@
   "date": "2026-08-17",
   "generated": "17 Aug 2026 (GitHub Actions)",
   "mode": "carry-forward",
-  "note": "Board carried forward; date advanced."
+  "note": "Carried forward (AI refresh skipped: API 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"API key is invalid.\"},\"request_id\":null}); date advanced."
 }

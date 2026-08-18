@@ -1,0 +1,39 @@
+name: Daily Content Engine
+
+on:
+  schedule:
+    - cron: "30 12 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-content-engine
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Generate today's board
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate-board.mjs
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "Content Engine (Actions)"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "daily refresh $(TZ=America/Chicago date +%F)"
+            git push
+          fi

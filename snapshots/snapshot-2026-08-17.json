@@ -2,5 +2,5 @@
   "date": "2026-08-17",
   "generated": "17 Aug 2026 (GitHub Actions)",
   "mode": "carry-forward",
-  "note": "Carried forward (AI refresh skipped: API 401: {\"type\":\"error\",\"error\":{\"type\":\"authentication_error\",\"message\":\"API key is invalid.\"},\"request_id\":null}); date advanced."
+  "note": "Carried forward (AI refresh skipped: API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011Ce9KpkUjxPmPZafL1LYoG\"}); date advanced."
 }

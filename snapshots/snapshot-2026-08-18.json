@@ -1,6 +1,6 @@
 {
   "date": "2026-08-18",
   "generated": "18 Aug 2026 (GitHub Actions)",
-  "mode": "carry-forward",
-  "note": "Carried forward (AI refresh skipped: API 400: {\"type\":\"error\",\"error\":{\"type\":\"invalid_request_error\",\"message\":\"Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.\"},\"request_id\":\"req_011CeAMcPy7Rvsnv66zVfs5G\"}); date advanced."
+  "mode": "ai-refresh",
+  "note": "Fresh AI board — 13 themes, top3 1/4/7 — via claude-sonnet-5."
 }

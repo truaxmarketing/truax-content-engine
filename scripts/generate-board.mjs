@@ -94,17 +94,23 @@ RIFF, DON'T RIP + NO FABRICATION (critical): every theme is Ryan's own POV/princ
 
 WHO HE SELLS TO (weight "fit"): founders/owners, new CMOs/VPs, PE operating partners, the C-suite.
 HIS BELIEFS (score "pov" against these): brand is the only moat; distinctiveness beats polish; clarity over ambiguity; objective truth over gut feel; story beats the feature-dump; the client is the hero; focus on three not ten.
-FOUR PILLARS (exact keys): "brand", "positioning", "leadership", "storytelling" (storytelling is fueled by his own Fortra Automate work).
-SIGNATURE (keep sticky — always include one leadership theme with signature:true): "The Reclaimed Hours" — AI handed leaders back 20-30% of their week; the ownable answer is to do LESS and reallocate to the strategic/brand/positioning calls AI can't make.
-AI WEIGHTING: apart from Reclaimed Hours, AI must not be a leading angle.
+SIX PILLARS (tag each theme to exactly one; use these EXACT keys):
+- "brand" — brand is the moat / distinctiveness
+- "positioning" — positioning & GTM; his trigger-based thesis
+- "leadership" — marketing leadership from a seat he held
+- "storytelling" — B2B storytelling, fueled by his own Fortra Automate work
+- "practical-ai" — something a marketer can ACTUALLY DO with AI today (concrete, executable). SOURCE THIS PILLAR STRICTLY from Ruben Hassid and Patrick Schaber. If neither has fresh, relevant practical-AI material this run, SKIP this pillar entirely — do NOT fill it from other sources, do NOT invent tactics. (Both are paid Substacks, so usually only their titles/public previews are available; keep claims to what you can actually verify, never fabricate the "how".)
+- "video" — video as a growth engine (short-form, YouTube, LinkedIn video as a B2B growth channel). Search BROADLY: surface credible recent takes from ANYONE speaking on video-as-growth, and lean on Ryan's own deep video expertise. Riff through his lens.
+RECLAIMED HOURS (UN-PINNED): "The Reclaimed Hours" (AI handed leaders back 20-30% of their week; the ownable answer is to do LESS and reallocate to strategic/brand/positioning calls AI can't make) is now just ONE eligible leadership angle — NOT mandatory, NOT auto-top-3. Include it only if the day's signal genuinely earns it. The "signature":true flag is OPTIONAL: set it on AT MOST ONE theme, and only if a single theme is a clear standout that deserves the spotlight; otherwise signature:false on all.
+AI WEIGHTING: keep the brand/positioning/leadership/storytelling pillars human- and strategy-first — AI is not a leading angle there. Practical, do-it-today AI lives ONLY in the "practical-ai" pillar (Ruben Hassid / Patrick Schaber).
 
 SCORING (ints 0-100): eng, fit, pov, sat. score(one decimal)=0.30*fit+0.25*pov+0.25*eng+0.20*(100-sat). quad: eng>=55&sat<45 "open"; eng>=55&sat>=45 "crowded"; eng<55&sat<45 "quiet"; eng<55&sat>=45 "fading". mom in "up|down|flat|new" (use "new" or "flat"). items 1-3.
 
 OUTPUT JSON SHAPE (exact keys):
-{"themes":[{"id":1,"t":"headline","pillar":"leadership","signature":true,"score":84.0,"eng":70,"fit":92,"pov":95,"sat":25,"items":2,"mom":"new","quad":"open","why":"<b>bold lead-in.</b> 1-2 sentences of Ryan's take.","ev":[{"a":"what was found + who said it + date, OR Ryan's own principle","s":"Source, date — spark only","u":"https://real-url-or-#"}]}],
+{"themes":[{"id":1,"t":"headline","pillar":"positioning","signature":false,"score":84.0,"eng":70,"fit":92,"pov":95,"sat":25,"items":2,"mom":"new","quad":"open","why":"<b>bold lead-in.</b> 1-2 sentences of Ryan's take.","ev":[{"a":"what was found + who said it + date, OR Ryan's own principle","s":"Source, date — spark only","u":"https://real-url-or-#"}]}],
  "top3":[1,2,3],
  "prompts":[{"chan":"LinkedIn · signature","theme":"short label","hook":"one-line hook in quotes","set":"2-3 sentence setup","ev":"where it comes from (credited spark + Ryan's POV)","prompt":"full copy-ready draft prompt: 'Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice...' leading with Ryan's thesis, source as a credited spark only, reader is the hero, no CTA, never salesy; for storytelling instruct reading Clients/Fortra Automate/ for real specifics and never inventing outcomes."}]}
-RULES: 11-13 themes, unique integer ids from 1, exactly one signature:true, all four pillars represented, top3 = three ids that exist across three different pillars (highest composite, each an original take), prompts = exactly 3 matching the top3 in order. Return ONLY the JSON object as the final content.`;
+RULES: 11-14 themes, unique integer ids from 1, AT MOST ONE signature:true (zero is fine), themes span AT LEAST 4 of the 6 pillars (include practical-ai and video ONLY when their sources have real material — otherwise skip them, never fabricate), top3 = three ids across three DIFFERENT pillars (highest composite, each an original take), prompts = exactly 3 matching the top3 in order. Return ONLY the JSON object as the final content.`;
 
   const resp = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -134,7 +140,7 @@ RULES: 11-13 themes, unique integer ids from 1, exactly one signature:true, all 
   return board;
 }
 function validateBoard(b) {
-  const PILLARS = ["brand","positioning","leadership","storytelling"];
+  const PILLARS = ["brand","positioning","leadership","storytelling","practical-ai","video"];
   const QUAD = ["open","crowded","quiet","fading"];
   const MOM = ["up","down","flat","new"];
   const isInt = (n,lo,hi) => Number.isInteger(n) && n>=lo && n<=hi;
@@ -153,7 +159,7 @@ function validateBoard(b) {
     for (const e of t.ev){ if(!str(e.a)||!str(e.s)) throw new Error("ev item"); if(typeof e.u!=="string") e.u="#"; }
     if (t.signature===true) sig++;
   }
-  if (sig!==1) throw new Error("need exactly one signature, got "+sig);
+  if (sig>1) throw new Error("at most one signature, got "+sig);
   if (pil.size<4) throw new Error("pillars not covered");
   if (!Array.isArray(b.top3)||b.top3.length!==3||new Set(b.top3).size!==3) throw new Error("top3");
   for (const id of b.top3) if (!ids.has(id)) throw new Error("top3 id "+id);

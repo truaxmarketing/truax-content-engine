@@ -85,7 +85,10 @@ SEARCH THESE SOURCES (find each one's most recent 1-3 posts/issues from the last
 - Thom Van Dycke (thomvandycke.com blog — founder-led marketing)
 - SparkToro / Rand Fishkin (sparktoro.com/blog)
 - Scott Galloway "No Mercy / No Malice" (profgalloway.com / profgmedia.com)
-Do a few targeted searches (e.g. "Exit Five newsletter", "SparkToro blog latest", "No Mercy No Malice latest", "Thom Van Dycke blog"). If a source can't be found this run, skip it — do NOT invent it.
+- DRMG / Mike Geraci (drmg.co/blog)
+- Ruben Hassid (Substack — search "Ruben Hassid Substack"). PAID newsletter: only his post TITLES and the public preview/teaser are available. Use them as a topic spark ONLY; never claim to quote the paywalled body.
+- Patrick Schaber (Substack — search "Patrick Schaber Substack"). PAID: same rule — title/preview as a spark only, never quote the paid body.
+Do a few targeted searches (e.g. "Exit Five newsletter", "SparkToro blog latest", "No Mercy No Malice latest", "Thom Van Dycke blog", "DRMG Mike Geraci blog", "Ruben Hassid Substack", "Patrick Schaber Substack"). If a source can't be found this run, skip it — do NOT invent it.
 
 RIFF, DON'T RIP + NO FABRICATION (critical): every theme is Ryan's own POV/principle/experience, provoked by what you actually found. NEVER invent a statistic, quote, study, campaign, company, or URL. If you cite a number or example, it must come from a real search result, credited to the source and dated, in the "ev" field with the real URL. When unsure, use Ryan's own principle with u:"#". Down-rank anything that is just "here's what X said" — a theme earns the board only if Ryan adds an angle the source lacks.
 

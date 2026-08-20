@@ -13,6 +13,39 @@ const now   = new Date();
 const today = new Intl.DateTimeFormat("en-GB", { timeZone: "America/Chicago", day: "2-digit", month: "short", year: "numeric" }).format(now);
 const iso   = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Chicago", year: "numeric", month: "2-digit", day: "2-digit" }).format(now);
 
+const BRIEF = `You build a daily B2B content-ideation board for Ryan Truax (founder, Truax Marketing; former VP of Marketing, ~20 yrs). Use the web_search tool to pull the LATEST published pieces from Ryan's sources, then riff on them through his lens. Return ONLY a JSON object at the end — no prose outside the JSON, no markdown fences.
+
+SEARCH THESE SOURCES (find each one's most recent 1-3 posts/issues from the last ~10 days):
+- Exit Five / Dave Gerhardt (exitfive.com newsletter & podcast)
+- Thom Van Dycke (thomvandycke.com blog — founder-led marketing)
+- SparkToro / Rand Fishkin (sparktoro.com/blog)
+- Scott Galloway "No Mercy / No Malice" (profgalloway.com / profgmedia.com)
+- DRMG / Mike Geraci (drmg.co/blog)
+- Ruben Hassid (Substack — search "Ruben Hassid Substack"). PAID newsletter: only his post TITLES and the public preview/teaser are available. Use them as a topic spark ONLY; never claim to quote the paywalled body.
+- Patrick Schaber (Substack — search "Patrick Schaber Substack"). PAID: same rule — title/preview as a spark only, never quote the paid body.
+Do a few targeted searches (e.g. "Exit Five newsletter", "SparkToro blog latest", "No Mercy No Malice latest", "Thom Van Dycke blog", "DRMG Mike Geraci blog", "Ruben Hassid Substack", "Patrick Schaber Substack"). If a source can't be found this run, skip it — do NOT invent it.
+
+RIFF, DON'T RIP + NO FABRICATION (critical): every theme is Ryan's own POV/principle/experience, provoked by what you actually found. NEVER invent a statistic, quote, study, campaign, company, or URL. If you cite a number or example, it must come from a real search result, credited to the source and dated, in the "ev" field with the real URL. When unsure, use Ryan's own principle with u:"#". Down-rank anything that is just "here's what X said" — a theme earns the board only if Ryan adds an angle the source lacks.
+
+WHO HE SELLS TO (weight "fit"): founders/owners, new CMOs/VPs, PE operating partners, the C-suite.
+HIS BELIEFS (score "pov" against these): brand is the only moat; distinctiveness beats polish; clarity over ambiguity; objective truth over gut feel; story beats the feature-dump; the client is the hero; focus on three not ten.
+SIX PILLARS (tag each theme to exactly one; use these EXACT keys):
+- "brand" — brand is the moat / distinctiveness
+- "positioning" — positioning & GTM; his trigger-based thesis
+- "leadership" — marketing leadership from a seat he held
+- "storytelling" — B2B storytelling, fueled by his own Fortra Automate work
+- "practical-ai" — something a marketer can ACTUALLY DO with AI today (concrete, executable). SOURCE THIS PILLAR STRICTLY from Ruben Hassid and Patrick Schaber. If neither has fresh, relevant practical-AI material this run, SKIP this pillar entirely — do NOT fill it from other sources, do NOT invent tactics. (Both are paid Substacks, so usually only their titles/public previews are available; keep claims to what you can actually verify, never fabricate the "how".)
+- "video" — video as a growth engine (short-form, YouTube, LinkedIn video as a B2B growth channel). Search BROADLY: surface credible recent takes from ANYONE speaking on video-as-growth, and lean on Ryan's own deep video expertise. Riff through his lens.
+RECLAIMED HOURS (UN-PINNED): "The Reclaimed Hours" (AI handed leaders back 20-30% of their week; the ownable answer is to do LESS and reallocate to strategic/brand/positioning calls AI can't make) is now just ONE eligible leadership angle — NOT mandatory, NOT auto-top-3. Include it only if the day's signal genuinely earns it. The "signature":true flag is OPTIONAL: set it on AT MOST ONE theme, and only if a single theme is a clear standout that deserves the spotlight; otherwise signature:false on all.
+AI WEIGHTING: keep the brand/positioning/leadership/storytelling pillars human- and strategy-first — AI is not a leading angle there. Practical, do-it-today AI lives ONLY in the "practical-ai" pillar (Ruben Hassid / Patrick Schaber).
+
+SCORING (ints 0-100): eng, fit, pov, sat. score(one decimal)=0.30*fit+0.25*pov+0.25*eng+0.20*(100-sat). quad: eng>=55&sat<45 "open"; eng>=55&sat>=45 "crowded"; eng<55&sat<45 "quiet"; eng<55&sat>=45 "fading". mom in "up|down|flat|new" (use "new" or "flat"). items 1-3.
+
+OUTPUT JSON SHAPE (exact keys):
+{"themes":[{"id":1,"t":"headline","pillar":"positioning","signature":false,"score":84.0,"eng":70,"fit":92,"pov":95,"sat":25,"items":2,"mom":"new","quad":"open","why":"<b>bold lead-in.</b> 1-2 sentences of Ryan's take.","ev":[{"a":"what was found + who said it + date, OR Ryan's own principle","s":"Source, date — spark only","u":"https://real-url-or-#"}]}],
+ "top3":[1,2,3],
+ "prompts":[{"chan":"LinkedIn · signature","theme":"short label","hook":"one-line hook in quotes","set":"2-3 sentence setup","ev":"where it comes from (credited spark + Ryan's POV)","prompt":"full copy-ready draft prompt: 'Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice...' leading with Ryan's thesis, source as a credited spark only, reader is the hero, no CTA, never salesy; for storytelling instruct reading Clients/Fortra Automate/ for real specifics and never inventing outcomes."}]}
+RULES: 11-14 themes, unique integer ids from 1, AT MOST ONE signature:true (zero is fine), themes span AT LEAST 4 of the 6 pillars (include practical-ai and video ONLY when their sources have real material — otherwise skip them, never fabricate), top3 = three ids across three DIFFERENT pillars (highest composite, each an original take), prompts = exactly 3 matching the top3 in order. Return ONLY the JSON object as the final content. It MUST be strict, valid JSON: escape all quotes/newlines inside string values, no trailing commas, no comments, no text before or after.`;
 let html = readFileSync(IDX, "utf8");
 
 // (1) date flip — always
@@ -78,40 +111,16 @@ function validatePageJs(h) {
   new Function(blocks.join("\n;\n"));
 }
 async function generateBoard() {
-  const brief = `You build a daily B2B content-ideation board for Ryan Truax (founder, Truax Marketing; former VP of Marketing, ~20 yrs). Use the web_search tool to pull the LATEST published pieces from Ryan's sources, then riff on them through his lens. Return ONLY a JSON object at the end — no prose outside the JSON, no markdown fences.
+  const brief = BRIEF;
+  let lastErr;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try { return await callOnce(brief); }
+    catch (e) { lastErr = e; console.warn(`generate attempt ${attempt}/3 failed: ${e.message}`); }
+  }
+  throw lastErr;
+}
 
-SEARCH THESE SOURCES (find each one's most recent 1-3 posts/issues from the last ~10 days):
-- Exit Five / Dave Gerhardt (exitfive.com newsletter & podcast)
-- Thom Van Dycke (thomvandycke.com blog — founder-led marketing)
-- SparkToro / Rand Fishkin (sparktoro.com/blog)
-- Scott Galloway "No Mercy / No Malice" (profgalloway.com / profgmedia.com)
-- DRMG / Mike Geraci (drmg.co/blog)
-- Ruben Hassid (Substack — search "Ruben Hassid Substack"). PAID newsletter: only his post TITLES and the public preview/teaser are available. Use them as a topic spark ONLY; never claim to quote the paywalled body.
-- Patrick Schaber (Substack — search "Patrick Schaber Substack"). PAID: same rule — title/preview as a spark only, never quote the paid body.
-Do a few targeted searches (e.g. "Exit Five newsletter", "SparkToro blog latest", "No Mercy No Malice latest", "Thom Van Dycke blog", "DRMG Mike Geraci blog", "Ruben Hassid Substack", "Patrick Schaber Substack"). If a source can't be found this run, skip it — do NOT invent it.
-
-RIFF, DON'T RIP + NO FABRICATION (critical): every theme is Ryan's own POV/principle/experience, provoked by what you actually found. NEVER invent a statistic, quote, study, campaign, company, or URL. If you cite a number or example, it must come from a real search result, credited to the source and dated, in the "ev" field with the real URL. When unsure, use Ryan's own principle with u:"#". Down-rank anything that is just "here's what X said" — a theme earns the board only if Ryan adds an angle the source lacks.
-
-WHO HE SELLS TO (weight "fit"): founders/owners, new CMOs/VPs, PE operating partners, the C-suite.
-HIS BELIEFS (score "pov" against these): brand is the only moat; distinctiveness beats polish; clarity over ambiguity; objective truth over gut feel; story beats the feature-dump; the client is the hero; focus on three not ten.
-SIX PILLARS (tag each theme to exactly one; use these EXACT keys):
-- "brand" — brand is the moat / distinctiveness
-- "positioning" — positioning & GTM; his trigger-based thesis
-- "leadership" — marketing leadership from a seat he held
-- "storytelling" — B2B storytelling, fueled by his own Fortra Automate work
-- "practical-ai" — something a marketer can ACTUALLY DO with AI today (concrete, executable). SOURCE THIS PILLAR STRICTLY from Ruben Hassid and Patrick Schaber. If neither has fresh, relevant practical-AI material this run, SKIP this pillar entirely — do NOT fill it from other sources, do NOT invent tactics. (Both are paid Substacks, so usually only their titles/public previews are available; keep claims to what you can actually verify, never fabricate the "how".)
-- "video" — video as a growth engine (short-form, YouTube, LinkedIn video as a B2B growth channel). Search BROADLY: surface credible recent takes from ANYONE speaking on video-as-growth, and lean on Ryan's own deep video expertise. Riff through his lens.
-RECLAIMED HOURS (UN-PINNED): "The Reclaimed Hours" (AI handed leaders back 20-30% of their week; the ownable answer is to do LESS and reallocate to strategic/brand/positioning calls AI can't make) is now just ONE eligible leadership angle — NOT mandatory, NOT auto-top-3. Include it only if the day's signal genuinely earns it. The "signature":true flag is OPTIONAL: set it on AT MOST ONE theme, and only if a single theme is a clear standout that deserves the spotlight; otherwise signature:false on all.
-AI WEIGHTING: keep the brand/positioning/leadership/storytelling pillars human- and strategy-first — AI is not a leading angle there. Practical, do-it-today AI lives ONLY in the "practical-ai" pillar (Ruben Hassid / Patrick Schaber).
-
-SCORING (ints 0-100): eng, fit, pov, sat. score(one decimal)=0.30*fit+0.25*pov+0.25*eng+0.20*(100-sat). quad: eng>=55&sat<45 "open"; eng>=55&sat>=45 "crowded"; eng<55&sat<45 "quiet"; eng<55&sat>=45 "fading". mom in "up|down|flat|new" (use "new" or "flat"). items 1-3.
-
-OUTPUT JSON SHAPE (exact keys):
-{"themes":[{"id":1,"t":"headline","pillar":"positioning","signature":false,"score":84.0,"eng":70,"fit":92,"pov":95,"sat":25,"items":2,"mom":"new","quad":"open","why":"<b>bold lead-in.</b> 1-2 sentences of Ryan's take.","ev":[{"a":"what was found + who said it + date, OR Ryan's own principle","s":"Source, date — spark only","u":"https://real-url-or-#"}]}],
- "top3":[1,2,3],
- "prompts":[{"chan":"LinkedIn · signature","theme":"short label","hook":"one-line hook in quotes","set":"2-3 sentence setup","ev":"where it comes from (credited spark + Ryan's POV)","prompt":"full copy-ready draft prompt: 'Use the linkedin-post skill. Read About-Ryan/Voice-Profile.md first and write in Ryan's voice...' leading with Ryan's thesis, source as a credited spark only, reader is the hero, no CTA, never salesy; for storytelling instruct reading Clients/Fortra Automate/ for real specifics and never inventing outcomes."}]}
-RULES: 11-14 themes, unique integer ids from 1, AT MOST ONE signature:true (zero is fine), themes span AT LEAST 4 of the 6 pillars (include practical-ai and video ONLY when their sources have real material — otherwise skip them, never fabricate), top3 = three ids across three DIFFERENT pillars (highest composite, each an original take), prompts = exactly 3 matching the top3 in order. Return ONLY the JSON object as the final content.`;
-
+async function callOnce(brief) {
   const resp = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -121,7 +130,7 @@ RULES: 11-14 themes, unique integer ids from 1, AT MOST ONE signature:true (zero
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 20000,
+      max_tokens: 32000,
       tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 8 }],
       messages: [{ role: "user", content: brief }],
     }),
@@ -130,15 +139,21 @@ RULES: 11-14 themes, unique integer ids from 1, AT MOST ONE signature:true (zero
   const data = await resp.json();
   const text = (data.content || []).map(b => (b.type === "text" ? b.text : "")).join("").trim();
   if (!text) throw new Error("empty API response");
+  const board = JSON.parse(extractJson(text));
+  validateBoard(board);
+  return board;
+}
 
+function extractJson(text) {
   let raw = text;
   if (raw.includes("```")) raw = raw.replace(/```[a-z]*\s*/gi, "");
   const a = raw.indexOf("{"), z = raw.lastIndexOf("}");
   if (a < 0 || z <= a) throw new Error("no JSON object in response");
-  const board = JSON.parse(raw.slice(a, z + 1));
-  validateBoard(board);
-  return board;
+  let s = raw.slice(a, z + 1);
+  s = s.replace(/,\s*([}\]])/g, "$1");      // strip trailing commas (common LLM slip)
+  return s;
 }
+
 function validateBoard(b) {
   const PILLARS = ["brand","positioning","leadership","storytelling","practical-ai","video"];
   const QUAD = ["open","crowded","quiet","fading"];

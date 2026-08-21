@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+  <!-- Truax house style: white bg, black ink, green #45e388, purples #731DD8 / #9792E3, Comic Neue -->
+  <style>
+    .hd{font-family:'Comic Neue','Comic Sans MS',cursive;font-weight:700}
+    .ch{font-family:'Comic Neue','Comic Sans MS',cursive;font-weight:400}
+    .src{font-family:'Comic Neue','Comic Sans MS',cursive;font-weight:400}
+  </style>
+  <rect width="1200" height="628" fill="#ffffff"/>
+
+  <text class="hd" x="110" y="112" font-size="38" fill="#17181d">what your buyers want</text>
+  <text class="hd" x="680" y="112" font-size="38" fill="#9792E3">what you&#8217;re giving them</text>
+
+  <path d="M614,140 L614,530" stroke="#dcdce2" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- LEFT: the market's answer -->
+  <rect x="160" y="200" width="104" height="280" fill="#45e388"/>
+  <rect x="160" y="200" width="104" height="280" fill="none" stroke="#17181d" stroke-width="3.5"/>
+  <text class="hd" x="212" y="182" font-size="44" fill="#17181d" text-anchor="middle">78%</text>
+  <text class="hd" x="212" y="518" font-size="30" fill="#17181d" text-anchor="middle">video</text>
+
+  <rect x="352" y="448" width="104" height="32" fill="#ffffff"/>
+  <rect x="352" y="448" width="104" height="32" fill="none" stroke="#17181d" stroke-width="3.5"/>
+  <text class="hd" x="404" y="432" font-size="44" fill="#17181d" text-anchor="middle">9%</text>
+  <text class="hd" x="404" y="518" font-size="30" fill="#17181d" text-anchor="middle">text</text>
+
+  <path d="M120,480 L500,480" stroke="#17181d" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- RIGHT: the chalkboard -->
+  <g>
+    <text class="ch" x="680" y="178" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(-0.3 680 178)">words and more words and more words</text>
+    <text class="ch" x="683" y="203" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.4 683 203)">words and more words and more words</text>
+    <text class="ch" x="678" y="228" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(-0.5 678 228)">words and more words and more words</text>
+    <text class="ch" x="684" y="253" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.2 684 253)">words and more words and more words</text>
+    <text class="ch" x="677" y="278" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.5 677 278)">words and more words and more words</text>
+    <text class="ch" x="681" y="303" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(-0.2 681 303)">words and more words and more words</text>
+    <text class="ch" x="685" y="328" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.3 685 328)">words and more words and more words</text>
+    <text class="ch" x="679" y="353" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(-0.4 679 353)">words and more words and more words</text>
+    <text class="ch" x="682" y="378" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.1 682 378)">words and more words and more words</text>
+    <text class="ch" x="676" y="403" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.4 676 403)">words and more words and more words</text>
+    <text class="ch" x="683" y="428" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(-0.3 683 428)">words and more words and more words</text>
+    <text class="ch" x="680" y="453" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.2 680 453)">words and more words and more words</text>
+    <text class="ch" x="678" y="478" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(-0.4 678 478)">words and more words and more words</text>
+    <text class="ch" x="684" y="503" font-size="21" fill="#17181d" opacity="0.42" transform="rotate(0.3 684 503)">words and more words and more words</text>
+  </g>
+
+  <text class="src" x="600" y="600" font-size="13" fill="#a7a7ae" text-anchor="middle">Wyzowl, cited in Visla, &#8220;LinkedIn Video in 2026&#8221;</text>
+</svg>

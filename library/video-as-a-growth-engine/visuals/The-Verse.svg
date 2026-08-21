@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 628" width="1200" height="628">
+  <!-- Truax house style: white bg, black ink #17181d, green #45e388, purples #731DD8 / #9792E3, Comic Neue -->
+  <style>
+    .hd{font-family:'Comic Neue','Comic Sans MS',cursive;font-weight:700}
+    .lt{font-family:'Comic Neue','Comic Sans MS',cursive;font-weight:400}
+  </style>
+  <rect width="1200" height="628" fill="#ffffff"/>
+
+  <!-- LEFT: ten seconds, machine-regular -->
+  <g stroke="#17181d" stroke-width="7" stroke-linecap="round" opacity="0.26">
+    <path d="M96,274 L96,354"/>
+    <path d="M112,274 L112,354"/>
+    <path d="M128,274 L128,354"/>
+    <path d="M144,274 L144,354"/>
+    <path d="M160,274 L160,354"/>
+    <path d="M176,274 L176,354"/>
+    <path d="M192,274 L192,354"/>
+    <path d="M208,274 L208,354"/>
+    <path d="M224,274 L224,354"/>
+  </g>
+
+  <!-- RIGHT: eight minutes, human -->
+  <g stroke="#45e388" stroke-width="8" stroke-linecap="round">
+    <path d="M300,280 L300,348"/>
+    <path d="M316,236 L316,392"/>
+    <path d="M332,262 L332,366"/>
+    <path d="M348,218 L348,410"/>
+    <path d="M364,270 L364,358"/>
+    <path d="M380,204 L380,424"/>
+    <path d="M396,252 L396,376"/>
+    <path d="M412,226 L412,402"/>
+    <path d="M428,274 L428,354"/>
+    <path d="M444,190 L444,438"/>
+    <path d="M460,256 L460,372"/>
+    <path d="M476,242 L476,386"/>
+    <path d="M492,212 L492,416"/>
+    <path d="M508,266 L508,362"/>
+    <path d="M524,230 L524,398"/>
+    <path d="M540,184 L540,444"/>
+    <path d="M556,258 L556,370"/>
+    <path d="M572,248 L572,380"/>
+    <path d="M588,222 L588,406"/>
+    <path d="M604,276 L604,352"/>
+    <path d="M620,206 L620,422"/>
+    <path d="M636,264 L636,364"/>
+    <path d="M652,304 L652,324"/>
+    <path d="M668,308 L668,320"/>
+    <path d="M684,310 L684,318"/>
+    <path d="M700,309 L700,319"/>
+    <path d="M716,311 L716,317"/>
+    <path d="M732,308 L732,320"/>
+    <path d="M748,305 L748,323"/>
+    <path d="M764,268 L764,360"/>
+    <path d="M780,226 L780,402"/>
+    <path d="M796,194 L796,434"/>
+    <path d="M812,260 L812,368"/>
+    <path d="M828,244 L828,384"/>
+    <path d="M844,214 L844,414"/>
+    <path d="M860,272 L860,356"/>
+    <path d="M876,228 L876,400"/>
+    <path d="M892,182 L892,446"/>
+    <path d="M908,254 L908,374"/>
+    <path d="M924,240 L924,388"/>
+    <path d="M940,218 L940,410"/>
+    <path d="M956,278 L956,350"/>
+    <path d="M972,202 L972,426"/>
+    <path d="M988,256 L988,372"/>
+    <path d="M1004,234 L1004,394"/>
+    <path d="M1020,210 L1020,418"/>
+    <path d="M1036,270 L1036,358"/>
+    <path d="M1052,224 L1052,404"/>
+    <path d="M1068,250 L1068,378"/>
+    <path d="M1084,198 L1084,430"/>
+    <path d="M1100,262 L1100,366"/>
+    <path d="M1116,246 L1116,382"/>
+  </g>
+
+  <!-- the pause -->
+  <g stroke="#731DD8" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M646,258 L646,246 L754,246 L754,258"/>
+  </g>
+  <text class="hd" x="700" y="230" font-size="23" fill="#731DD8" text-anchor="middle">the pause</text>
+
+  <!-- span brackets -->
+  <g stroke="#c9c9d1" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M90,466 L90,478 L232,478 L232,466"/>
+  </g>
+  <g stroke="#17181d" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M294,466 L294,478 L1138,478 L1138,466"/>
+  </g>
+
+  <text class="hd" x="161" y="518" font-size="30" fill="#17181d" opacity="0.42" text-anchor="middle">ten seconds</text>
+  <text class="lt" x="161" y="550" font-size="22" fill="#9792E3" text-anchor="middle">anyone</text>
+
+  <text class="hd" x="716" y="518" font-size="30" fill="#17181d" text-anchor="middle">eight minutes</text>
+  <text class="lt" x="716" y="550" font-size="22" fill="#731DD8" text-anchor="middle">nobody can fake it</text>
+</svg>

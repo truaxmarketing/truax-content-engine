@@ -187,6 +187,7 @@ async function callOnce(brief, strict) {
   if (!text) throw new Error("empty API response");
   const board = JSON.parse(extractJson(text));
   scrubBoard(board);
+  coerceBoard(board);
   validateBoard(board);
   requireDatedCitations(board, strict);
   return board;
@@ -225,6 +226,66 @@ function scrubBoard(b) {
     }
   };
   walk(b);
+}
+
+// v6.1: REPAIR, DON'T REJECT.
+// The 7 Sept run threw "items/mom/quad" and fell back to carry-forward, killing a
+// board that was probably fine, because one theme had a cosmetic field slightly off.
+// items, mom and quad only drive display: the dot count, the momentum arrow, the
+// quadrant label. Every one of them is either derivable or safely defaultable, so
+// throwing away a whole day's board over them is indefensible. Standing rule for this
+// file: the model's output is where the brittleness lives, so coerce anything cosmetic
+// and reserve hard rejection for things that would actually mislead Ryan (a missing
+// title, a bogus pillar, a broken top3, an undated citation).
+function coerceBoard(b) {
+  const PILLARS = ["brand","positioning","leadership","storytelling","practical-ai","video"];
+  const MOM = ["up","down","flat","new"];
+  const QUAD = ["open","crowded","quiet","fading"];
+  const clampInt = (v, lo, hi, dflt) => {
+    const n = Math.round(Number(v));
+    return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : dflt;
+  };
+  if (!b || !Array.isArray(b.themes)) return;
+  const fixed = [];
+  for (const t of b.themes) {
+    // scores: clamp into range rather than reject
+    for (const k of ["eng","fit","pov","sat"]) t[k] = clampInt(t[k], 0, 100, 50);
+    if (typeof t.score !== "number" || !Number.isFinite(t.score) || t.score < 0 || t.score > 100) {
+      t.score = Math.round((0.30*t.fit + 0.25*t.pov + 0.25*t.eng + 0.20*(100 - t.sat)) * 10) / 10;
+      fixed.push(`theme ${t.id}: score recomputed`);
+    }
+    // items: purely a dot count on the card
+    const items0 = t.items;
+    t.items = clampInt(t.items, 1, 6, Array.isArray(t.ev) ? Math.min(6, Math.max(1, t.ev.length)) : 1);
+    if (items0 !== t.items) fixed.push(`theme ${t.id}: items ${JSON.stringify(items0)} -> ${t.items}`);
+    // mom: a momentum arrow. "flat" is the honest default when the model invents a word.
+    if (!MOM.includes(t.mom)) { fixed.push(`theme ${t.id}: mom ${JSON.stringify(t.mom)} -> flat`); t.mom = "flat"; }
+    // quad: fully derivable from eng and sat, so never trust a bad one
+    const derived = t.eng >= 55 ? (t.sat < 45 ? "open" : "crowded") : (t.sat < 45 ? "quiet" : "fading");
+    if (!QUAD.includes(t.quad) || t.quad !== derived) {
+      if (t.quad !== derived) fixed.push(`theme ${t.id}: quad ${JSON.stringify(t.quad)} -> ${derived}`);
+      t.quad = derived;
+    }
+    if (t.signature !== true) t.signature = false;
+    if (typeof t.pillar === "string") t.pillar = t.pillar.trim().toLowerCase().replace(/[\s_]+/g, "-");
+    if (Array.isArray(t.ev)) for (const e of t.ev) if (typeof e.u !== "string" || !e.u.trim()) e.u = "#";
+  }
+  // at most one signature: keep the highest-scoring, demote the rest
+  const sigs = b.themes.filter(t => t.signature === true);
+  if (sigs.length > 1) {
+    sigs.sort((x, y) => y.score - x.score).slice(1).forEach(t => { t.signature = false; });
+    fixed.push(`demoted ${sigs.length - 1} extra signature flag(s)`);
+  }
+  // top3 must be three distinct real ids; backfill from the highest scorers if not
+  const ids = b.themes.map(t => t.id);
+  if (!Array.isArray(b.top3)) b.top3 = [];
+  b.top3 = [...new Set(b.top3.filter(id => ids.includes(id)))].slice(0, 3);
+  if (b.top3.length < 3) {
+    const ranked = [...b.themes].sort((x, y) => y.score - x.score).map(t => t.id);
+    for (const id of ranked) { if (b.top3.length >= 3) break; if (!b.top3.includes(id)) b.top3.push(id); }
+    fixed.push(`top3 backfilled -> ${b.top3.join("/")}`);
+  }
+  if (fixed.length) console.log("Coerced:", fixed.join(" | "));
 }
 
 // v6: the core fix. A citation that names a publication but not a piece is the

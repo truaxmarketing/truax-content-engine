@@ -1,6 +1,7 @@
 {
   "date": "2026-09-07",
   "generated": "07 Sept 2026 (GitHub Actions)",
-  "mode": "web-search-refresh",
-  "note": "Fresh board — 14 themes, top3 7/5/3 — claude-sonnet-5 + web search."
+  "mode": "carry-forward",
+  "note": "Carried forward (refresh skipped: items/mom/quad); date advanced.",
+  "ledger": null
 }
